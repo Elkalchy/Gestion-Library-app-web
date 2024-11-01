@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Livre</title>
+    <link rel="stylesheet" href="{% static 'css/style_details.css'%}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Détails du Livre</h2>
+    
+    <div class="book-details">
+        <p><span>Titre :</span> {{book.title}}</p>
+        <p><span>Auteur :</span> {{book.auteur}}</p>
+        <p><span>Catégorie :</span> {{book.categorie}}</p>
+        <p><span>Date de Publication :</span> {{book.date}}</p>
+        <p><span>ISBN :</span> {{book.isbn}}</p>
+        <p><span>Résumé :</span> {{book.resume}}</p>
+        <p><span>Disponibilité :</span> {{book.disponibilite}}</p>
+    </div>
+
+    <div class="btn-group">
+        <a href="{% url 'mod_details' book.id%}" class="btn btn-edit">Modifier</a>
+        <a href="{% url 'supp' book.id%}" class="btn btn-delete">Supprimer</a>
+    </div>
+
+    <a href="{% url 'index'%}" class="btn-back">Retour</a>
+</div>
+
+</body>
+</html>

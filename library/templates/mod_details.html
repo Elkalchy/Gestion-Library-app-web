@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Livre</title>
+    <link rel="stylesheet" href="{% static 'css/style_mod_details.css'%}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Modifier le Livre</h2>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text" id="title" name="title" value="{{book.title}}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="author">Auteur</label>
+            <input type="text" id="author" name="auteur" value="{{book.auteur}}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="category">Catégorie</label>
+            <input type="text" id="category" name="categorie" value="{{book.categorie}}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="publication_date">Date de Publication</label>
+            <input type="date" id="publication_date" name="date" value="{{ book.date|date:'Y-m-d' }}" required>
+        </div>        
+        
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="text" id="isbn" name="isbn" value="{{book.isbn}}">
+        </div>
+        
+        <div class="form-group">
+            <label for="summary">Résumé</label>
+            <textarea id="summary" name="resume">{{book.resume}}</textarea>
+        </div>
+        
+        <div class="btn-group">
+            <button type="submit" class="btn btn-save">Enregistrer</button>
+            <a href="{% url 'details' book.id%}" class="btn btn-cancel">Annuler</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

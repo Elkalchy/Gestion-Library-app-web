@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Livre</title>
+    <link rel="stylesheet" href="{% static 'css/style_modifier.css'%}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Modifier le Livre</h2>
+    
+    <form method="POST" action="{% url 'modifier' book.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text" id="title" name="title" value="{{ book.title }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="author">Auteur</label>
+            <input type="text" id="author" name="auteur" value="{{ book.auteur }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="category">Catégorie</label>
+            <input type="text" id="category" name="categorie" value="{{ book.categorie }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="availability">Disponibilité</label>
+            <select id="availability" name="disp" required>
+                <option value="Disponible" {% if book.disponibilite == "Disponible" %}selected{% endif %}>Disponible</option>
+                <option value="Indisponible" {% if book.disponibilite == "Indisponible" %}selected{% endif %}>Emprunté</option>
+            </select>
+        </div>        
+    
+        <div class="btn-group">
+            <button type="submit" class="btn btn-save">Enregistrer</button>
+            <a href="{% url 'index'%}" class="btn btn-cancel">Annuler</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

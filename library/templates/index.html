@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de la Bibliothèque</title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css'%}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Gestion de la Bibliothèque</h2>
+
+    <!-- Section de Recherche -->
+    <div class="search-section">
+        <form method="POST" action="{% url 'rech'%}">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text"  name="rech"  placeholder="Rechercher un livre" value="{{ recherche }}"/>
+                <button type="submit">Rechercher</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Liste des Livres -->
+    <h3>Liste des Livres</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Catégorie</th>
+                <th>Disponibilité</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {%for book in books %}
+        <tbody>
+            
+            <tr>
+                <td>{{book.id}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.auteur}}</td>
+                <td>{{book.categorie}}</td>
+                <td>{{book.disponibilite}}</td>
+                <td>
+                    <a href="{% url 'details' book.id %}" class="btn btn-info">Détails</a>
+                    <a href="{% url 'modifier' book.id %}" class="btn btn-warning">Modifier</a>
+                    <a href="{% url 'supp' book.id%}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">Aucun élément à afficher</td>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Ajouter un Livre -->
+    <h3>Ajouter un Livre</h3>
+    <div class="add-book-section">
+        <form method="POST" action="{% url 'ajouter'%}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" id="title" placeholder="Entrez le titre du livre" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Auteur</label>
+                <input type="text" id="author" placeholder="Entrez l'auteur du livre" name="auteur" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Catégorie</label>
+                <input type="text" id="category" placeholder="Entrez la catégorie du livre" name="categorie" required>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+h2, h3 {
+    color: #333;
+    text-align: center;
+}
+.search-section, .add-book-section {
+    margin: 20px 0;
+}
+.input-group {
+    display: flex;
+    justify-content: center;
+}
+.input-group input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+.input-group button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.btn {
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-info {
+    background-color: #17a2b8;
+}
+.btn-warning {
+    background-color: #ffc107;
+}
+.btn-danger {
+    background-color: #dc3545;
+}
+.btn-success {
+    background-color: #28a745;
+    width: 100%;
+    margin-top: 10px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
